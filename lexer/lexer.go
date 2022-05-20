@@ -24,7 +24,14 @@ func (lxr *Lexer) NextToken() token.Token {
 
     switch lxr.ch {
     case '!':
-        tok = newToken(token.BANG, lxr.ch)
+        if lxr.peekChar() == '=' {
+            ch := lxr.ch
+            lxr.readChar()
+            literal := string(ch) + string(lxr.ch)
+            tok = token.Token{Type: token.NOT_EQ, Literal: literal}
+        } else {
+            tok = newToken(token.BANG, lxr.ch)
+        }
     case '/':
         tok = newToken(token.SLASH, lxr.ch)
     case '*':
@@ -34,7 +41,14 @@ func (lxr *Lexer) NextToken() token.Token {
     case '<':
         tok = newToken(token.LT, lxr.ch)
     case '=':
-        tok = newToken(token.ASSIGN, lxr.ch)
+        if lxr.peekChar() == '=' {
+            ch := lxr.ch
+            lxr.readChar()
+            literal := string(ch) + string(lxr.ch)
+            tok = token.Token{Type: token.EQ, Literal: literal}
+        } else {
+            tok = newToken(token.ASSIGN, lxr.ch)
+        }
     case ';':
         tok = newToken(token.SEMICOLON, lxr.ch)
     case '(':
@@ -111,6 +125,19 @@ func (lxr *Lexer) readChar() {
     lxr.readPosition += 1
 }
 
+/*
+`peekChar()` is really similar to `readChar()` , except that it doesn’t increment l.position and
+l.readPosition . We only want to “peek” ahead in the input and not move around in it, so
+we know what a call to `readChar()` would return.
+*/
+func (lxr *Lexer) peekChar() byte {
+    if (lxr.readPosition >= len(lxr.input)) {
+        return 0
+    } else {
+        return lxr.input[lxr.readPosition]
+    }
+}
+
 func (lxr *Lexer) readNumber() string {
     position := lxr.position
     for isDigit(lxr.ch) {
@@ -125,3 +152,4 @@ func (lxr *Lexer) skipWhitespace() {
         lxr.readChar()
     }
 }
+
