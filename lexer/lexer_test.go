@@ -6,7 +6,7 @@ import (
 	"github.com/kubabialy/donkey/token"
 )
 
-func TestBasicCodeForTokens(t *testing.T) {
+func TextNextToken(t *testing.T) {
     input := `let five = 5;
 let ten = 10;
 
@@ -15,6 +15,8 @@ let add = fun(x, y) {
 };
 
 let result = add(five, ten);
+!-/*5;
+5 < 10 > 5;
 `
 
     tests := []struct {
