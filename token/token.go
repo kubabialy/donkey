@@ -8,31 +8,39 @@ type Token struct {
 }
 
 const (
-    ILLEGAL = "ILLEGAL"
-    EOF     = "EOF"
+    ILLEGAL   = "ILLEGAL"
+    EOF       = "EOF"
     /*
     Identifiers + literals
     Variable names identifiers:
     ex. add, foobar, x, y
     Integer tokens
     */
-    IDENT  = "IDENT"
-    INT    = "INT"
+    IDENT     = "IDENT"
+    INT       = "INT"
     // Operators
-    ASSIGN = "="
-    PLUS   = "+"
+    ASSIGN    = "="
+    PLUS      = "+"
+    MINUS     = "-"
+    BANG      = "!"
+    ASTERISK  = "*"
+    SLASH     = "/"
+
+    LT        = "<"
+    GT        = ">"
+
     // Delimiters
-    COMMA = ","
+    COMMA     = ","
     SEMICOLON = ";"
 
-    LPAREN = "("
-    RPAREN = ")"
-    LBRACE = "{"
-    RBRACE = "}"
+    LPAREN    = "("
+    RPAREN    = ")"
+    LBRACE    = "{"
+    RBRACE    = "}"
 
     // Keywords
-    FUNCTION = "FUNCTION"
-    LET      = "LET"
+    FUNCTION  = "FUNCTION"
+    LET       = "LET"
 )
 
 var keywords = map[string]TokenType{
