@@ -23,6 +23,16 @@ func (lxr *Lexer) NextToken() token.Token {
     lxr.skipWhitespace()
 
     switch lxr.ch {
+    case '!':
+        tok = newToken(token.BANG, lxr.ch)
+    case '/':
+        tok = newToken(token.SLASH, lxr.ch)
+    case '*':
+        tok = newToken(token.ASTERISK, lxr.ch)
+    case '>':
+        tok = newToken(token.GT, lxr.ch)
+    case '<':
+        tok = newToken(token.LT, lxr.ch)
     case '=':
         tok = newToken(token.ASSIGN, lxr.ch)
     case ';':
@@ -35,6 +45,8 @@ func (lxr *Lexer) NextToken() token.Token {
         tok = newToken(token.COMMA, lxr.ch)
     case '+':
         tok = newToken(token.PLUS, lxr.ch)
+    case '-':
+        tok = newToken(token.MINUS, lxr.ch)
     case '{':
         tok = newToken(token.LBRACE, lxr.ch)
     case '}':
