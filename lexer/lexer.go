@@ -147,6 +147,10 @@ func (lxr *Lexer) readNumber() string {
     return lxr.input[position:lxr.position]
 }
 
+/*
+because whitespaces are just noise not required to parse the code
+`Lexer` will catch whitespace/new lines and move the pointer forward
+*/
 func (lxr *Lexer) skipWhitespace() {
     for lxr.ch == ' ' || lxr.ch == '\t' || lxr.ch == '\n' || lxr.ch == '\r' {
         lxr.readChar()
