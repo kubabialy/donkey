@@ -3,7 +3,7 @@
 ## What is this
 This repo is an attempt to create a programming language. 
 Initally it will fairly strictly follow instructions in "Writing An Interpreter In Go", but the goal is 
-to create a network oriented programming that makes building HTTP API's fun... some day.
+to create a network oriented programming language that makes building HTTP API's fun... some day.
 
 Also - great way to dive deeper into Golang.
 
