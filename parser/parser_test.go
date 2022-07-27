@@ -335,6 +335,10 @@ func TestOperatorPrecedenceParsing(t *testing.T) {
 			"3 + 4 * 5 == 3 * 1 + 4 * 5",
 			"((3 + (4 * 5)) == ((3 * 1) + (4 * 5)))",
 		},
+		{
+			"a / b * c",
+			"((a / b) * c)",
+		},
 	}
 
 	for _, tt := range tests {
